@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Mashup by Rupanshi Jain</title>
+    <style>
+        body {
+            background-color: #000000;
+            font-family: Helvetica, sans-serif;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid gray;
+            width: 500px;
+        }
+
+        input {
+            margin: 10px 0px;
+            padding: 10px 5px 10px 5px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #CC6E9B;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            padding: auto;
+        }
+
+        label {
+            font-size: 15px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            font-size: 40px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #CC6E9B;
+        }
+    </style>
+</head>
+
+<body>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="container-fluid p-0">
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="True">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <div class="form-container">
+        <h1>Mashup</h1>
+        <form action="/mashup/" method="POST">
+            {% csrf_token %}
+            <label for="singer_name">Singer Name</label>
+            <input type="text" name="singer_name" placeholder="Zayn Malik" required><br>
+            <label for="num_videos">Number of Videos</label>
+            <input type="number" name="num_videos" placeholder="3" required><br>
+            <label for="duration">Duration of each video</label>
+            <input type="number" name="duration" placeholder="20" required><br>
+            <label for="email">Email Address</label>
+            <input type="email" name="email" placeholder="abc@thapar.edu" required><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
