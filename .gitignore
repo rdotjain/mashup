@@ -24,3 +24,6 @@ npm-error.log
 
 # SSl cert
 *.pem
+
+# Ignore static files
+**/static
